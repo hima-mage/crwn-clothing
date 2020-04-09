@@ -1,7 +1,6 @@
 import React from "react";
 //  higher order component take component as arg and return modified component
 import {withRouter} from 'react-router-dom'
-
 import "./menu-item.styles.scss";
 
 const MenuItem = ({title,imageUrl, size, history, linkUrl,  match}) => (

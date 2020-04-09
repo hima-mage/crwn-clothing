@@ -8,35 +8,35 @@ class Directory extends React.Component {
     this.state = {
       sections: [
         {
-          title: "hat",
-          imageUrl: "https://www.volusion.com/blog/content/images/2018/09/iStock-695474264.jpg",
+          title: "hats",
+          imageUrl: "https://c4.wallpaperflare.com/wallpaper/251/306/450/adult-back-view-fashion-fedora-wallpaper-preview.jpg",
           id: 1,
           linkUrl : 'hats'
         },
         {
-          title: "women",
-          imageUrl: "https://www.volusion.com/blog/content/images/2018/09/iStock-578084554.jpg",
+          title: "jackets",
+          imageUrl: "https://i.pinimg.com/originals/79/e7/dc/79e7dc50cd0af1a818c7271158be7590.jpg",
           id: 2,
-          linkUrl : 'women'
+          linkUrl : 'jackets'
         },
         {
-          title: "man",
-          imageUrl: "https://www.volusion.com/blog/content/images/2018/09/Screen-Shot-2018-09-10-at-2.41.18-PM--2-.png",
-          linkUrl : 'man',
+          title: "sneakers",
+          imageUrl: "https://c0.wallpaperflare.com/preview/943/148/889/nike-air-jordan-1-shoes-near-chain-link-fence.jpg",
+          linkUrl : 'sneakers',
           id: 3,
         },
         {
-          title: "monkey",
-          imageUrl: "https://www.volusion.com/blog/content/images/2018/09/iStock-905879078.jpg",
+          title: "men",
+          imageUrl: "https://c4.wallpaperflare.com/wallpaper/378/481/206/peaky-blinders-cillian-murphy-thomas-shelby-wallpaper-preview.jpg",
           id: 4,
-          linkUrl : 'monkey',
+          linkUrl : 'men',
           size: 'large'
         },
         {
-          title: "horse",
-          imageUrl: "http://www.modescope.com/blog/wp-content/uploads/2015/09/Cover-Fashion-eCommerce-Shopping-Online-App-e1441296361208.jpg",
+          title: "women",
+          imageUrl: "https://c1.wallpaperflare.com/preview/237/195/684/attractive-beautiful-beauty-cute.jpg",
           id: 5,
-          linkUrl : 'horse ',
+          linkUrl : 'women ',
           size: 'large'
         },
       ],
