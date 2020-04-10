@@ -6,34 +6,36 @@ import ShopPage from "./pages/shop/shop.component";
 import Header from "./component/header/header.component";
 import Sign from "./pages/sign/sign.component";
 // auth state will live in app to pass into any component needed
-import {auth } from './firebase/firebase.utils'
+import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 
 class App extends Component {
   constructor() {
-    super()
+    super();
 
     this.state = {
-      currentUser: null
-    }
+      currentUser: null,
+    };
   }
 
-  unsubcribeFromAuth = null; 
+  unsubcribeFromAuth = null;
 
   componentDidMount() {
-    // return method which will be used to close channel 
-    this.unsubcribeFromAuth = auth.onAuthStateChanged(user => {
-      this.setState({currentUser: user})
-    })
+    // return method which will be used to close channel
+    this.unsubcribeFromAuth = auth.onAuthStateChanged(async user => {
+      // this.setState({ currentUser: user });
+      createUserProfileDocument(user);
+      console.log('ok')
+      // console.log(user)
+    });
   }
 
   componentWillUnmount() {
-    this.unsubcribeFromAuth()
+    this.unsubcribeFromAuth();
   }
-
 
   render() {
     return (
-      <div className="App"> 
+      <div className="App">
         <Header currentUser={this.state.currentUser} />
         <Switch>
           <Route exact path="/" component={HomePage} />
@@ -41,7 +43,7 @@ class App extends Component {
           <Route path="/sign" component={Sign} />
         </Switch>
       </div>
-    )
+    );
   }
 }
 
