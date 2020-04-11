@@ -30,7 +30,7 @@ class App extends Component {
               id: snapShot.id,
               ...snapShot.data(), // all data of this doc
             },
-          } , () =>  console.log(this.state));
+          } , () =>  console.log(this.state) );
         });
  
       } else {
