@@ -21,11 +21,23 @@ class App extends Component {
 
   componentDidMount() {
     // return method which will be used to close channel
-    this.unsubcribeFromAuth = auth.onAuthStateChanged(async user => {
-      // this.setState({ currentUser: user });
-      createUserProfileDocument(user);
-      console.log('ok')
-      // console.log(user)
+    this.unsubcribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+      if (userAuth) {
+        const userRef = await createUserProfileDocument(userAuth);
+        userRef.onSnapshot((snapShot) => {
+          this.setState({
+            currentUser: {
+              id: snapShot.id,
+              ...snapShot.data(), // all data of this doc
+            },
+          } , () =>  console.log(this.state));
+        });
+ 
+      } else {
+        this.setState({
+          currentUser: userAuth,
+        });
+      }
     });
   }
 
