@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link } from 'react-router-dom'
+import {connect} from 'react-redux'
 import {ReactComponent as Logo} from '../../assets/crown.svg'
 import {auth} from '../../firebase/firebase.utils'
 import './header.styles.scss'
@@ -24,4 +25,16 @@ const  Header = ({currentUser}) => {
     )
 }
 
-export default  Header   
+/*
+this mapState
+take the state in store 
+then set the state of the component 
+connect
+help to pass the state from store 
+set state of current component
+*/
+const mapStateToProps = state => ({
+    currentUser: state.user.currentUser
+})
+
+export default  connect(mapStateToProps)(Header)  
