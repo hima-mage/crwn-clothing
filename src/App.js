@@ -6,6 +6,7 @@ import HomePage from "./pages/homepage/homepage.component";
 import ShopPage from "./pages/shop/shop.component";
 import Header from "./component/header/header.component";
 import Sign from "./pages/sign/sign.component";
+import CheckoutPage from './pages/checkout/checkout.component'
 // auth state will live in app to pass into any component needed
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import { setCurrentUser } from "./redux/user/user.actions";
@@ -45,6 +46,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/shop" component={ShopPage} />
+          <Route exact path="/checkout" component={CheckoutPage} />
           <Route exact path="/sign" render={() => this.props.currentUser ? (<Redirect to='/' />) : (<Sign />)} />
         </Switch>
       </div>
