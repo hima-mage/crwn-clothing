@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import { connect } from "react-redux";
+import { connect } from "react-redux"; 
+import { createStructuredSelector } from "reselect";
 import HomePage from "./pages/homepage/homepage.component";
 import ShopPage from "./pages/shop/shop.component";
 import Header from "./component/header/header.component";
@@ -8,6 +9,7 @@ import Sign from "./pages/sign/sign.component";
 // auth state will live in app to pass into any component needed
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import { setCurrentUser } from "./redux/user/user.actions";
+import {selectCurrentUser} from './redux/user/user.selectors'
 
 import "./App.css";
 
@@ -51,8 +53,8 @@ class App extends Component {
 }
  
 //  get the user state to controll access to sign page
-const mapStateToProps = ({user }) => ({
-    currentUser : user.currentUser
+const mapStateToProps = createStructuredSelector({
+    currentUser : selectCurrentUser
 })
 // controll user auth state change
 const mapDispatchToProps = (dispatch) => ({
