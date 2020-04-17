@@ -1,5 +1,5 @@
 .collection-item {
-    width: 22vw;
+    width: 22vw; // this will be relative to window not the container
     display: flex;
     flex-direction: column; // this allow our footer and img to set in vertical alignment
     height: 350px;
