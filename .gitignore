@@ -10,7 +10,7 @@
 
 # production
 /build
-
+/src/component/stripe-button/stripe-button.component.jsx
 # auth 
 **/src/firebase/firebase.utils.js
 
