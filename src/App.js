@@ -8,20 +8,16 @@ import Header from "./component/header/header.component";
 import Sign from "./pages/sign/sign.component";
 import CheckoutPage from "./pages/checkout/checkout.component";
 // auth state will live in app to pass into any component needed
-import {
-  auth,
-  createUserProfileDocument,
-  addCollectionAndDocuments,
-} from "./firebase/firebase.utils";
+import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import { setCurrentUser } from "./redux/user/user.actions";
 import { selectCurrentUser } from "./redux/user/user.selectors";
-import { selectCollectionForPreview } from "./redux/shop/shop.selectors";
+// import { selectCollectionForPreview } from "./redux/shop/shop.selectors";
 
 class App extends Component {
   unsubcribeFromAuth = null;
 
   componentDidMount() {
-    const { setCurrentUser, collectionArray } = this.props;
+    const { setCurrentUser } = this.props;
     // return method which will be used to close channel
     this.unsubcribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
@@ -34,7 +30,6 @@ class App extends Component {
         });
       } else {
         setCurrentUser(userAuth);
-        addCollectionAndDocuments('collections', collectionArray.map(({title, items}) => ({title , items}) ) )
       }
     });
   }
@@ -66,8 +61,7 @@ class App extends Component {
 
 //  get the user state to controll access to sign page
 const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser,
-  collectionArray: selectCollectionForPreview,
+  currentUser: selectCurrentUser 
 });
 // controll user auth state change
 const mapDispatchToProps = (dispatch) => ({
