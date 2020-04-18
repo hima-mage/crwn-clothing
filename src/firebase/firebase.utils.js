@@ -43,7 +43,19 @@ export const createUserProfileDocument = async(userAuth, additionalData) => {
     return userRef;
 };
 
-//  here i provid the auth with google accout
+export const addCollectionAndDocuments = async(collectionKey, objectToAdd) => {
+        const collectionRef = firestore.collection(collectionKey)
+        const batch = firestore.batch()
+        objectToAdd.forEach(obj => {
+                // get me new doc with new id
+                const newDocRef = collectionRef.doc()
+                    // create the batch request 
+                batch.set(newDocRef, obj)
+            })
+            // commit that batch - when success void (null val) promise
+        return await batch.commit()
+    }
+    //  here i provid the auth with google accout
 const provider = new firebase.auth.GoogleAuthProvider();
 // this will popup modal with choose sign in account 
 provider.setCustomParameters({ prompt: 'select_account' })
