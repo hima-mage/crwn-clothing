@@ -10,9 +10,9 @@
 
 # production
 /build
-/src/component/stripe-button/stripe-button.component.jsx
+# /src/component/stripe-button/stripe-button.component.jsx
 # auth 
-**/src/firebase/firebase.utils.js
+# **/src/firebase/firebase.utils.js
 
 # misc
 .DS_Store
