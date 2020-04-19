@@ -44,16 +44,34 @@ export const createUserProfileDocument = async(userAuth, additionalData) => {
 };
 
 export const addCollectionAndDocuments = async(collectionKey, objectToAdd) => {
-        const collectionRef = firestore.collection(collectionKey)
-        const batch = firestore.batch()
-        objectToAdd.forEach(obj => {
-                // get me new doc with new id
-                const newDocRef = collectionRef.doc()
-                    // create the batch request 
-                batch.set(newDocRef, obj)
-            })
-            // commit that batch - when success void (null val) promise
-        return await batch.commit()
+    const collectionRef = firestore.collection(collectionKey)
+    const batch = firestore.batch()
+    objectToAdd.forEach(obj => {
+            // get me new doc with new id
+            const newDocRef = collectionRef.doc()
+                // create the batch request 
+            batch.set(newDocRef, obj)
+        })
+        // commit that batch - when success void (null val) promise
+    return await batch.commit()
+}
+
+export const convertCollectionSnapshotToMap = (collections) => {
+        const transformedCollection = collections.docs.map(
+            doc => {
+                const { title, items } = doc.data()
+
+                return {
+                    routeName: encodeURI(title.toLowerCase()),
+                    id: doc.id,
+                    title,
+                    items
+                }
+            }
+        )
+
+        console.log(transformedCollection)
+        console.log(1)
     }
     //  here i provid the auth with google accout
 const provider = new firebase.auth.GoogleAuthProvider();
