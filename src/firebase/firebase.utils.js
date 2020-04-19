@@ -70,8 +70,10 @@ export const convertCollectionSnapshotToMap = (collections) => {
             }
         )
 
-        console.log(transformedCollection)
-        console.log(1)
+        transformedCollection.reduce((accumulator, collection) => {
+            accumulator[collection.title.toLowerCase()] = collection
+            return accumulator
+        }, {})
     }
     //  here i provid the auth with google accout
 const provider = new firebase.auth.GoogleAuthProvider();
