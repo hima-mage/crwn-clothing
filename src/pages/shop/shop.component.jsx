@@ -27,7 +27,7 @@ class ShopPage extends React.Component {
    
    
     // this to target the collectionRef on first time or updating - when this code rendering
-    collectionRef.onSnapshot(async snapshot => { 
+    collectionRef.get.then(  snapshot => { 
       const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
       updateCollections(collectionsMap);  
       this.setState({ loading: false });
