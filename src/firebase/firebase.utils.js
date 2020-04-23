@@ -56,11 +56,12 @@ export const addCollectionAndDocuments = async(collectionKey, objectToAdd) => {
     return await batch.commit()
 }
 
-export const convertCollectionSnapshotToMap = (collections) => {
+export const convertCollectionsSnapshotToMap = (collections) => {
+
         const transformedCollection = collections.docs.map(
             doc => {
                 const { title, items } = doc.data()
-
+                console.log(doc.data())
                 return {
                     routeName: encodeURI(title.toLowerCase()),
                     id: doc.id,
@@ -70,10 +71,15 @@ export const convertCollectionSnapshotToMap = (collections) => {
             }
         )
 
-        transformedCollection.reduce((accumulator, collection) => {
+
+
+        return transformedCollection.reduce((accumulator, collection) => {
+
             accumulator[collection.title.toLowerCase()] = collection
+            console.log(accumulator)
             return accumulator
         }, {})
+
     }
     //  here i provid the auth with google accout
 const provider = new firebase.auth.GoogleAuthProvider();
