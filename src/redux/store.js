@@ -1,12 +1,14 @@
 import { createStore, applyMiddleware } from "redux";
 //  using logger to debug redux in development mode
 import logger from "redux-logger";
-import thunk from 'redux-thunk'
+
+import createSagaMiddleware from 'redux-saga'
+
 // this to persist the store
 import { persistStore } from "redux-persist";
 import rootReducer from "./root-reducer";
-
-const middlewares = [thunk];
+const sagaMiddleware = createSagaMiddleware()
+const middlewares = [sagaMiddleware];
 
 if (process.env.NODE_ENV === 'development') {
     middlewares.push(logger)
