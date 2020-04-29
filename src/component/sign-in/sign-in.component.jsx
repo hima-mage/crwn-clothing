@@ -8,7 +8,7 @@ import "./sign-in.styles.scss";
 
 // this class cuz i have  to store what user type
 const SignIn = ({ emailSignInStart, googleSignInStart }) => {
-  const [userCredentials, setCredentials] = useState({
+  const [userCredentials, setUserCredentials] = useState({
     email: "",
     password: "",
   });
@@ -23,7 +23,7 @@ const SignIn = ({ emailSignInStart, googleSignInStart }) => {
   const handleChange = (event) => {
     const { value, name } = event.target;
     // by this wat i can pass fun to both inputs
-    setCredentials({ ...userCredentials, [name]: value });
+    setUserCredentials({ ...userCredentials, [name]: value });
   };
 
  
