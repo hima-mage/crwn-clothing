@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
@@ -6,20 +6,20 @@ import HomePage from "./pages/homepage/homepage.component";
 import ShopPage from "./pages/shop/shop.component";
 import Header from "./component/header/header.component";
 import Sign from "./pages/sign/sign.component";
-import CheckoutPage from "./pages/checkout/checkout.component";
-// auth state will live in app to pass into any component needed
-import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
-import { setCurrentUser } from "./redux/user/user.actions";
+import CheckoutPage from "./pages/checkout/checkout.component"; 
+ 
 import { selectCurrentUser } from "./redux/user/user.selectors";
-import { checkUserSession } from "./redux/user/user.actions";
-// import { selectCollectionForPreview } from "./redux/shop/shop.selectors";
+import { checkUserSession } from "./redux/user/user.actions"; 
+import { GlobalStyle } from "./global.styles";
+
 
 const App = ({ checkUserSession, currentUser }) => {
-  useEffect(() => { 
-    checkUserSession()
-  }, [checkUserSession])
+  useEffect(() => {
+    checkUserSession();
+  }, [checkUserSession]);
   return (
     <div className="App">
+        <GlobalStyle />
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} /> 
